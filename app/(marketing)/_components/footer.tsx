@@ -1,11 +1,10 @@
 "use client"
-
+import Logo from "./logo"
 const Footer = () => {
-  return (
-    <div className="w-[300] py-6 bg-red-300 items-center justify-evenly flex flex-row">
-      <p>This is Noteify made by Om Chaudhari</p>
-      <p>CopyRight @Notefiy</p>
-    </div>
-  )
+    return (
+        <div className="w-full p-6 bg-background items-center flex flex-row z-50">
+            <Logo />
+        </div>
+    )
 }
 export default Footer
