@@ -7,6 +7,20 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Noteify App",
   description: "Made by Om Chaudhari",
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/next.svg",
+        href: "/next.svg",
+      },
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/vercel.svg",
+        href: "/vercel.svg",
+      },
+    ]
+  }
 };
 
 export default function RootLayout({
