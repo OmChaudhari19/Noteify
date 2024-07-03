@@ -9,9 +9,9 @@ const font = Poppins({
 
 const Logo = () => {
     return (
-        <div className="hidden md:flex items-center gap-x-2">
-            <Image src="/next.svg" height={40} width={40} alt="logo" />
-            <p className={cn("font-semibold", font.className)}>Noteify</p>
+        <div className=" md:flex items-center gap-x-2 hidden">
+            <Image src="/Modified_Logo.png" height={40} width={40} alt="logo" />
+            {/* <p className={cn("font-semibold", font.className)}>Noteify</p> */}
         </div>
     )
 }

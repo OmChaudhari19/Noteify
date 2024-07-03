@@ -3,8 +3,8 @@ import Heroes from "./_components/heroes";
 import Footer from "./_components/footer";
 export default function MarketingPage() {
   return (
-    <div className="min-h-full flex flex-col">
-      <div className="flex flex-col items-center justify-center  md:justify-start text-center flex-1 gap-y-8 px-6 pb-10">
+    <div className="min-h-full flex flex-col z-30">
+      <div className="flex flex-col items-center justify-center  md:justify-evenly text-center flex-1 px-6 pb-5 ">
         <Heading />
         <Heroes />
       </div>
