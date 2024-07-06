@@ -1,19 +1,18 @@
-"use client"
-import { Button } from "@/components/ui/button"
-import { SignInButton } from "@clerk/clerk-react"
-import { useConvexAuth } from "convex/react"
+"use client";
 
+import Image from "next/image";
+import emptyFolder from "@/public/EmptyDoc.png"
 const DocumentPage = () => {
-    const { isAuthenticated } = useConvexAuth()
-    return (
-        <>
-            {isAuthenticated && (<div>DocumentPage</div>)}
-            {!isAuthenticated && <>
-                Sorry You cannot enter the page as you are not Authenticated
-                <SignInButton><Button>Please SignIn</Button></SignInButton>
-            </>}
 
-        </>
+    return (
+        <div className="h-full flex flex-col items-center justify-center space-y-4 ">
+
+            <div className="w-full flex flex-col items-center justify-center text-3xl">
+                <Image src={emptyFolder} height={500} width={500} alt="xxx" />
+                No Notes Found
+            </div>
+
+        </div>
 
 
     )
