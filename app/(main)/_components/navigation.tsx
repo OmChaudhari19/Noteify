@@ -1,17 +1,21 @@
 "use client"
 import React, { useEffect } from "react"
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon } from "lucide-react"
+import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from "lucide-react"
 import { usePathname } from "next/navigation";
 import { useRef, ElementRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import UserItems from "@/app/(main)/_components/userItems"
+import { Item } from "./item";
+import { toast } from "sonner";
+import DocumentList from "./documentList";
 const Navigation = () => {
     const pathname = usePathname();
     const isMobile = useMediaQuery('(max-width: 768px)')
-    const documents = useQuery(api.documents.get);
+    // const documents = useQuery(api.documents.get);
+    const create = useMutation(api.documents.create);
     const isResizingRef = useRef(false);
     const sideBarRef =
         useRef<ElementRef<"aside">>(null);
@@ -76,6 +80,14 @@ const Navigation = () => {
         }
     }
 
+    const handleCreate = () => {
+        const promise = create({ title: "Untitled" });
+        toast.promise(promise, {
+            loading: "Creating a new Note",
+            success: "New note created successfully",
+            error: "Error creating a note",
+        })
+    }
     return (
         <>
             <aside ref={sideBarRef} className={cn("group/sidebar bg-[#c1dedd] dark:dark:bg-[#252424] h-full bg-secondary overflow-y-auto relative flex flex-col w-60 z-[99999]", isResetting && "transition-all ease-in-out duration-300", isMobile && "w-0")}>
@@ -84,11 +96,15 @@ const Navigation = () => {
                 </div>
                 <div>
                     <UserItems />
+                    <Item label="Search" icon={Search} isSearch onClick={() => { }} />
+                    <Item label="Settings" icon={Settings} onClick={() => { }} />
+                    <Item onClick={handleCreate} label="New Page" icon={PlusCircle} />
                 </div>
                 <div className="mt-4">
-                    {documents?.map((it) => {
+                    {/* {documents?.map((it) => {
                         return <p key={it._id}>{it.title}</p>
-                    })}
+                    })} */}
+                    <DocumentList />
                 </div>
                 <div onMouseDown={handleMouseDown}
                     onClick={resetWidth}
