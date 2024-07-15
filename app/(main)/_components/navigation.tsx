@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from "react"
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from "lucide-react"
+import { ArchiveIcon, ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings } from "lucide-react"
 import { usePathname } from "next/navigation";
 import { useRef, ElementRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -100,11 +100,16 @@ const Navigation = () => {
                     <Item label="Settings" icon={Settings} onClick={() => { }} />
                     <Item onClick={handleCreate} label="New Page" icon={PlusCircle} />
                 </div>
-                <div className="mt-4">
+                <div className="mt-4 overflow-auto">
                     {/* {documents?.map((it) => {
                         return <p key={it._id}>{it.title}</p>
                     })} */}
                     <DocumentList />
+                    <Item onClick={handleCreate} label="Add a Page" icon={Plus} />
+                </div>
+                <div className="w-full text-muted-foreground font-medium px-4 py-1 flex items-center bg-primary/5  border-neutral-400 rounded-sm ">
+                    Trash Box
+                    <ArchiveIcon className=" ml-auto h-5 w-5 text-muted-foreground" />
                 </div>
                 <div onMouseDown={handleMouseDown}
                     onClick={resetWidth}
