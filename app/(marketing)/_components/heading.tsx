@@ -9,7 +9,7 @@ import { SignInButton } from "@clerk/clerk-react";
 const Heading = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
   return (
-    <div className="max-w-3xl space-y-10 sm:mt-8 md:mt-8">
+    <div className="max-w-3xl space-y-10 sm:mt-2 md:mt-2">
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold">
         Your Ideas, Documents, &Plans. Unified. Welcome to <span className="underline">Noteify</span>
       </h1 >

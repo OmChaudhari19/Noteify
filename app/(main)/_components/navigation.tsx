@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from "react"
 import { cn } from "@/lib/utils";
-import { ArchiveIcon, ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings } from "lucide-react"
+import { ArchiveIcon, ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from "lucide-react"
 import { usePathname } from "next/navigation";
 import { useRef, ElementRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -11,6 +11,8 @@ import UserItems from "@/app/(main)/_components/userItems"
 import { Item } from "./item";
 import { toast } from "sonner";
 import DocumentList from "./documentList";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import TrashBox from "./trashbox";
 const Navigation = () => {
     const pathname = usePathname();
     const isMobile = useMediaQuery('(max-width: 768px)')
@@ -106,11 +108,19 @@ const Navigation = () => {
                     })} */}
                     <DocumentList />
                     <Item onClick={handleCreate} label="Add a Page" icon={Plus} />
+                    <Popover>
+                        <PopoverTrigger className=" w-full mt-4">
+                            <Item onClick={() => { }} icon={Trash} label="Trash Box" />
+                        </PopoverTrigger>
+                        <PopoverContent side={isMobile ? "bottom" : "right"} className="w-72 p-0">
+                            <TrashBox />
+                        </PopoverContent>
+                    </Popover>
                 </div>
-                <div className="w-full text-muted-foreground font-medium px-4 py-1 flex items-center bg-primary/5  border-neutral-400 rounded-sm ">
+                {/* <div className="w-full text-muted-foreground font-medium px-4 py-1 flex items-center bg-primary/5  border-neutral-400 rounded-sm ">
                     Trash Box
                     <ArchiveIcon className=" ml-auto h-5 w-5 text-muted-foreground" />
-                </div>
+                </div> */}
                 <div onMouseDown={handleMouseDown}
                     onClick={resetWidth}
                     className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 right-0 top-0  bg-primary/10" />
